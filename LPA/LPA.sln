@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LPA", "LPA.csproj", "{5C97A23F-0629-4BD8-B8DD-BB3C1B615CE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LPA", "LPA.csproj", "{5C97A23F-0629-4BD8-B8DD-BB3C1B615CE0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageWriter", "..\ImageWriter\ImageWriter.csproj", "{E74FF38B-3098-4FE7-8C93-A032CBC3D7FF}"
 EndProject
