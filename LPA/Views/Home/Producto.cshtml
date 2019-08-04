@@ -1,0 +1,153 @@
+﻿@model int
+
+@{
+    Layout = null;
+}
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Productos LPA</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/shop-homepage.css" rel="stylesheet">
+    <style>
+        button {border: 1px #AAA solid; padding: 4px 10px;}
+        .hide {display: none;}
+    </style>
+
+</head>
+
+<body>
+    <button type="button" id="volver" class="btn btn-light">Inicio</button>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+            </div>
+
+            <div class="col-lg-9">
+                <div class="row">
+                    <div id="containerProductos">
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.col-lg-9 -->
+        </div>
+        <!-- /.row -->
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="confirmarEliminar">
+        <div class="modal-dialog"  role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Eliminar producto</h5>
+                    <button class="close" aria-label="Close" type="button" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" type="button" id="BtnEliminarConfirmacion" data-dismiss="modal">Eliminar</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+    <div class="appButtonDiv" id="appButtonDiv"></div>
+    <!-- /.container -->
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; LPA 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+    <script src="~/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            var host = window.location.origin;
+            var apiEndPoint = host + "/api/v1/Productos/" + @Model;
+            var domContainerProductos = document.getElementById("containerProductos") || $("#containerProductos");
+
+            $.ajax({
+                url: apiEndPoint,
+                type: 'GET',
+                dataType: 'json',
+                success: function (prod) {
+                    var urlImagen = host + prod.productImagePath;
+                    var TituloProducto = prod.productName;
+                    var PrecioProducto = prod.productPrice;
+                    var DescripcionProducto = prod.productDescription;
+                    var div = document.createElement("div");
+                    div.innerHTML = `       <div>
+                                                <img src="${urlImagen}" alt="">
+                                                <div>
+                                                    <h4>
+                                                       ${TituloProducto}
+                                                    </h4>
+                                                    <div style="text-align: center;">
+                                                        <button id="modificar" stryle="display: inline-block;" type="button" class="btn btn-warning">Modificar</button>
+                                                        <button type="button" id="eliminar" class="btn btn-danger" data-toggle="modal" data-target="#confirmarEliminar">Eliminar</button>
+                                                    </div>
+                                                    <h5>${PrecioProducto}</h5>
+                                                    <p>${DescripcionProducto}</p>
+                                                </div>
+                                            </div>`;
+                    domContainerProductos.appendChild(div);
+                    document.getElementById("modificar").onclick = function () {
+                        window.location = host + "/Home/ModificarProducto/" + @Model;
+                    };
+                },
+                error: function (error) {
+                    var div = document.createElement("div");
+                    div.innerHTML = "<h1>No se ha encontrado el producto</h1>";
+                    domContainerProductos.appendChild(div);
+                }
+            });
+
+            document.getElementById("volver").onclick = function () {
+                window.location = window.location.origin;
+
+            }; 
+
+            document.getElementById("BtnEliminarConfirmacion").onclick = function () {
+                $.ajax({
+                    url: apiEndPoint,
+                    type: 'DELETE',
+                    dataType: 'json',
+                    success: function () {
+                        window.location  = window.location.origin;
+                    }
+                });
+            };
+        })
+    </script>
+
+</body>
+
+</html>
+
+

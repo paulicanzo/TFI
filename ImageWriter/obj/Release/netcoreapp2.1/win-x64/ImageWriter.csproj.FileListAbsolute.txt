@@ -1,0 +1,12 @@
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\bin\Release\netcoreapp2.1\win-x64\ImageWriter.deps.json
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\bin\Release\netcoreapp2.1\win-x64\ImageWriter.dll
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\bin\Release\netcoreapp2.1\win-x64\ImageWriter.pdb
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\bin\Release\netcoreapp2.1\win-x64\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\bin\Release\netcoreapp2.1\win-x64\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\obj\Release\netcoreapp2.1\win-x64\ImageWriter.csprojAssemblyReference.cache
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\obj\Release\netcoreapp2.1\win-x64\ImageWriter.csproj.CoreCompileInputs.cache
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\obj\Release\netcoreapp2.1\win-x64\ImageWriter.AssemblyInfoInputs.cache
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\obj\Release\netcoreapp2.1\win-x64\ImageWriter.AssemblyInfo.cs
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\obj\Release\netcoreapp2.1\win-x64\ImageWriter.csproj.CopyComplete
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\obj\Release\netcoreapp2.1\win-x64\ImageWriter.dll
+C:\Users\imjua\OneDrive\Escritorio\ImageWriter\obj\Release\netcoreapp2.1\win-x64\ImageWriter.pdb
