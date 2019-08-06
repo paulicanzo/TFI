@@ -688,27 +688,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\paula\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Users\\imjua\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\paula\\source\\repos\\ImageWriter\\ImageWriter.csproj",
+      "projectUniqueName": "C:\\Users\\imjua\\repos\\LPA_2019_FINAL\\ImageWriter\\ImageWriter.csproj",
       "projectName": "ImageWriter",
-      "projectPath": "C:\\Users\\paula\\source\\repos\\ImageWriter\\ImageWriter.csproj",
-      "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\paula\\source\\repos\\ImageWriter\\obj\\",
+      "projectPath": "C:\\Users\\imjua\\repos\\LPA_2019_FINAL\\ImageWriter\\ImageWriter.csproj",
+      "packagesPath": "C:\\Users\\imjua\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\imjua\\repos\\LPA_2019_FINAL\\ImageWriter\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\imjua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"

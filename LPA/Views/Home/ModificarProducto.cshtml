@@ -125,16 +125,72 @@
 
 
     <script>
-        $(document).ready(function () {
-            var host = window.location.origin;
-            var apiEndPoint = host + "/api/v1/Productos/" + idProducto;
-            var domContainerProductos = document.getElementById("containerProducto") || $("#containerProducto");
-            document.getElementById("leyendaForm").innerText = leyenda;
-            var btn = document.getElementById("BtnEnviarDatos");
-            btn.innerText = btnLeyenda;
+        var host = window.location.origin;
+        var apiEndPoint = host + "/api/v1/Productos/" + idProducto;
+        var domContainerProductos;
+        var enviarModificar;
 
-            if (idProducto !== -99) {
-                 $.ajax({
+        $(document).ready(function () {           
+            domContainerProductos = $("#containerProducto");
+            $("leyendaForm").innerText = leyenda;
+            $("BtnEnviarDatos").innerText = btnLeyenda;
+            var nombre = $("#TituloProducto")
+            var precio = $("#PrecioProducto")
+            var descripcion = $("#DescripcionTexto")
+            
+            var enviarModificar = function () {
+                var formData = new FormData();
+                formData.append("titulo", nombre.val())
+                formData.append("precio", precio.val())                
+                formData.append("descripcion", descripcion.val())
+                $.each($('#FotoProducto')[0].files, function (i, file) {
+                    console.log(file)
+                    formData.append('file-' + i, file);
+                });     
+                $.ajax({
+                    url: apiEndPoint,
+                    type: 'PUT',
+                    method: 'PUT',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function () {
+                        window.location = window.location.origin;
+                    },
+                    error: function (e) {
+                        domContainerProductos.innerHTML = JSON.stringify(e) + "<h1>Error</h1>";
+                    }
+                });
+            };
+            var enviarAgregar = function () {
+                //Enviar agregar
+                var formData = new FormData();
+                formData.append("titulo", nombre.val())
+                formData.append("precio", precio.val())
+                formData.append("descripcion", descripcion.val())
+                $.each($('#FotoProducto')[0].files, function (i, file) {
+                    console.log(file)
+                    formData.append('file-' + i, file);
+                });
+                $.ajax({
+                    url: apiEndPoint,
+                    type: 'POST',
+                    method: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function () {
+                        window.location = window.location.origin;
+                    },
+                    error: function (e) {
+                        domContainerProductos.innerHTML = JSON.stringify(e) + "<h1>Error</h1>";
+                    }
+                });
+            }
+            var buscarProducto = function () {
+                $.ajax({
                     url: apiEndPoint,
                     type: 'GET',
                     dataType: 'json',
@@ -157,73 +213,31 @@
                     }
                 });
             }
-            
+                        
+            if (idProducto !== -99) {
+                buscarProducto();
+            }            
 
             document.getElementById("volver").onclick = function () {
                 window.location  = window.location.origin;
-
             };
-
             document.getElementById("BtnCancelar").onclick = function () {
                 window.location  = window.location.origin;
-
             };
-
             document.getElementById("BtnEnviarDatos").onclick = function () {
                 //Validar datos
-                var nombre = $("#TituloProducto")
-                var precio = $("#PrecioProducto")
-                var descripcion = $("#DescripcionTexto")
-                var imagen = $("#FotoProducto")
-
+                debugger;
                 if (idProducto === -99) {
-                    if (imagen.val() == '') {
+                    if (imagen[0].files[0] == undefined) {
                         alert("No se selecciono un archvivo");
                         return false;
                     }
-                    //Enviar update
-                    $.ajax({
-                        url: apiEndPoint,
-                        type: 'POST',
-                        dataType: 'json',
-                        data: {
-                            "productName":new FormData(nombre) ,
-                            "productPrice":new FormData(precio) ,
-                            "productDescription":new FormData(descripcion) ,
-                            "file": new FormData($("#FotoProducto"))
-                        },
-                        success: function () {
-                            window.location = window.location.origin;
-                        }
-                    });
+                    enviarAgregar();
                 }
                 else
                 {
-                   
-                  /*  formData.append("productName", nombre);
-                    formData.append("productPrice", precio);
-                    formData.append("productDescription", descripcion);*/
-                    //Enviar update
-                    $.ajax({
-                        url: apiEndPoint,
-                        type: 'PUT',
-                        dataType: 'json',
-                        data: {
-                            id: idProducto,
-                            nombre : $("#TituloProducto").val(),
-                             precio : $("#PrecioProducto").val(),
-                             descripcion : $("#DescripcionTexto").val(),
-                             imagen : $("#FotoProducto").val()  
-                        },
-                        success: function () {
-                            window.location  = window.location.origin;
-                        },
-                        error: function (e) {
-                            alert(e);}
-                    });
-                }
-
-                
+                    enviarModificar();
+                }                
             };
         })
     </script>

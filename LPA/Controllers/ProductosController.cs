@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LPA.Context;
 using LPA.Models;
 using LPA.Handlers;
+using System.IO;
 
 namespace LPA.Controllers
 {
@@ -46,42 +47,52 @@ namespace LPA.Controllers
 
         // PUT: api/Productos/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProducto(int id, [FromForm] Producto producto, IFormFile file)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        public async Task<IActionResult> PutProducto(int id)
+        {   
+            if (!ProductoExists(id)) return BadRequest();
 
-            if (id != producto.ProductId)
+            var producto = await _context.Productos.FindAsync(id);
+            var valiTitulo = Request.Form.TryGetValue("titulo", out var titulo);
+            var valiPrecio = Request.Form.TryGetValue("precio", out var precio);
+            var valiDescr = Request.Form.TryGetValue("descripcion", out var descripcion);
+            var valiPrecioP = Decimal.TryParse(precio.ToString(), out var precioD);
+
+            if (!valiTitulo|| !valiPrecio  || !valiDescr || !valiPrecioP)
             {
-                return BadRequest();
+                return BadRequest(new JsonResult("ERROR VALIDACION"));
             }
-            if (file != null)
+            producto.ProductName = titulo;
+            producto.ProductPrice = precioD;
+            producto.ProductDescription = descripcion;
+
+            if (Request.Form.Files.Count != 0)
             {
-                try
+                var file = Request.Form.Files.First();
+                if (file != null)
                 {
-                    var actionResult = await _imageHandler.UploadImage(file);
-                    var okResult = actionResult as ObjectResult;
-
-                    if (okResult.Value.ToString() == "Invalid image file")
+                    try
                     {
-                        return BadRequest(new JsonResult(okResult.Value));
+                        var actionResult = await _imageHandler.UploadImage(file);
+                        var okResult = actionResult as ObjectResult;
+
+                        if (okResult.Value.ToString() == "Tipo de imagen invalido")
+                        {
+                            return BadRequest(new JsonResult(okResult.Value));
+                        }
+                        else
+                        {
+                            var path = "/images/products/" + okResult.Value.ToString();
+                            producto.ProductImagePath = path;
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        var path = "/images/products/" + okResult.Value.ToString();
-                        producto.ProductImagePath = path;
-
+                        return BadRequest(new JsonResult("ERROR"));
                     }
                 }
-                catch (Exception)
-                {
-                    return BadRequest(new JsonResult("ERROR"));
-                }
             }
+
             _context.Entry(producto).State = EntityState.Modified;
-
             try
             {
                 await _context.SaveChangesAsync();
@@ -102,30 +113,69 @@ namespace LPA.Controllers
 
         // POST: api/Productos
         [HttpPost]
-        public async Task<ActionResult<Producto>> PostProducto([FromForm] Producto product, IFormFile file)
+        public async Task<ActionResult<Producto>> PostProducto()
         {
-            if (!ModelState.IsValid)
+            var producto = new Producto();
+
+            if (!Request.Form.TryGetValue("titulo", out var titulo) || !Request.Form.TryGetValue("precio", out var precio) ||
+                !Request.Form.TryGetValue("descripcion", out var descripcion) || Decimal.TryParse(precio.ToString(), out var precioD))
             {
-                return BadRequest(ModelState);
+                return BadRequest(new JsonResult("ERROR VALIDACION"));
             }
-            try
+            producto.ProductName = titulo;
+            producto.ProductPrice = precioD;
+            producto.ProductDescription = descripcion;
+
+            if (Request.Form.Files.Count != 0)
             {
-                var actionResult = await _imageHandler.UploadImage(file);
-                var okResult = actionResult as ObjectResult;
-                if (okResult.Value.ToString() == "Invalid image file")
+                var file = Request.Form.Files.First();
+                if (file != null)
                 {
-                    return BadRequest(new JsonResult(okResult.Value));
+                    try
+                    {
+                        var actionResult = await _imageHandler.UploadImage(file);
+                        var okResult = actionResult as ObjectResult;
+
+                        if (okResult.Value.ToString() == "Tipo de imagen invalido")
+                        {
+                            return BadRequest(new JsonResult(okResult.Value));
+                        }
+                        else
+                        {
+                            var path = "/images/products/" + okResult.Value.ToString();
+
+                            //Eliminamos la imagen anterior
+                            string pathFile = Directory.GetCurrentDirectory() + "/wwwroot" + producto.ProductImagePath;
+                            if (System.IO.File.Exists(pathFile))
+                            {
+                                System.IO.File.Delete(pathFile);
+                            }
+
+                            producto.ProductImagePath = path;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        return BadRequest(new JsonResult("ERROR"));
+                    }
                 }
                 else
                 {
-                    var path = "/images/products/" + okResult.Value.ToString();
-                    product.ProductImagePath = path;
-                    _context.Productos.Add(product);
-
-                    await _context.SaveChangesAsync();
-
-                    return CreatedAtAction("GetProduct", new { id = product.ProductId }, product);
+                    return BadRequest(new JsonResult("IMAGEN FALTANTE"));
                 }
+            }
+            else
+            {
+                return BadRequest(new JsonResult("IMAGEN FALTANTE"));
+            }
+
+            try
+            {
+                _context.Productos.Add(producto);
+
+                await _context.SaveChangesAsync();
+
+                return Ok(producto);
             }
             catch (Exception)
             {
@@ -142,10 +192,20 @@ namespace LPA.Controllers
             {
                 return NotFound();
             }
-
+            try
+            {
+                string pathFile = Directory.GetCurrentDirectory()+ "/wwwroot"+producto.ProductImagePath;
+                if (System.IO.File.Exists(pathFile))
+                {
+                    System.IO.File.Delete(pathFile);
+                }
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }        
             _context.Productos.Remove(producto);
             await _context.SaveChangesAsync();
-
             return producto;
         }
 
