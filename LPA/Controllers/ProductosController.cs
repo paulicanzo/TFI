@@ -50,11 +50,11 @@ namespace LPA.Controllers
         public async Task<IActionResult> PutProducto(int id)
         {   
             if (!ProductoExists(id)) return BadRequest();
-
             var producto = await _context.Productos.FindAsync(id);
             var valiTitulo = Request.Form.TryGetValue("titulo", out var titulo);
             var valiPrecio = Request.Form.TryGetValue("precio", out var precio);
-            var valiDescr = Request.Form.TryGetValue("descripcion", out var descripcion);
+            precio = precio.ToString().Replace(".", ",");
+            var valiDescr = Request.Form.TryGetValue("descripcion", out var descripcion);            
             var valiPrecioP = Decimal.TryParse(precio.ToString(), out var precioD);
 
             if (!valiTitulo|| !valiPrecio  || !valiDescr || !valiPrecioP)
@@ -118,7 +118,7 @@ namespace LPA.Controllers
             var producto = new Producto();
 
             if (!Request.Form.TryGetValue("titulo", out var titulo) || !Request.Form.TryGetValue("precio", out var precio) ||
-                !Request.Form.TryGetValue("descripcion", out var descripcion) || Decimal.TryParse(precio.ToString(), out var precioD))
+                !Request.Form.TryGetValue("descripcion", out var descripcion) || Decimal.TryParse(precio.ToString().Replace(".", ","), out var precioD))
             {
                 return BadRequest(new JsonResult("ERROR VALIDACION"));
             }

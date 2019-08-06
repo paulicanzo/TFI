@@ -227,6 +227,10 @@
             document.getElementById("BtnEnviarDatos").onclick = function () {
                 //Validar datos
                 debugger;
+                if (!nombre.val() || 0 === nombre.val().length || !nombre.val().trim()) { alert("Titulo vacio"); return;}
+                if (!descripcion.val() || 0 === descripcion.val().length || !descripcion.val().trim()) { alert("Descripción vacia"); return; }
+                if (!precio.val() || 0 === precio.val().length || !precio.val().trim() || !$.isNumeric(precio.val()) || !(parseFloat(precio.val())>0)) { alert("Precio vacio o incorrecto"); }
+               
                 if (idProducto === -99) {
                     if (imagen[0].files[0] == undefined) {
                         alert("No se selecciono un archvivo");
