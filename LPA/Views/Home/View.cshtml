@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <button type="button" class="btn btn-success" >Agregar producto</button>
+    <button type="button" class="btn btn-success" id="agregar" >Agregar producto</button>
     <!-- Page Content -->
     <div class="container">
 
@@ -64,8 +64,14 @@
     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
 
-        //Hacer llamada AJAX al servidor
         var host = window.location.origin;
+        document.getElementById("agregar").onclick = function () {
+            window.location = host + "/Home/AgregarProducto/";
+        }; 
+
+
+
+        //Hacer llamada AJAX al servidor
         var apiEndPoint = host + "/api/v1/Productos/"
         var domContainerProductos = document.getElementById("containerProductos") || $("#containerProductos");
 
