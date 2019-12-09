@@ -12954,24 +12954,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\imjua\\.nuget\\packages\\": {},
+    "C:\\Users\\paula\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\imjua\\repos\\LPA_2019_FINAL\\LPA\\LPA.csproj",
+      "projectUniqueName": "C:\\Users\\paula\\source\\repos\\LPA\\LPA.csproj",
       "projectName": "LPA",
-      "projectPath": "C:\\Users\\imjua\\repos\\LPA_2019_FINAL\\LPA\\LPA.csproj",
-      "packagesPath": "C:\\Users\\imjua\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\imjua\\repos\\LPA_2019_FINAL\\LPA\\obj\\",
+      "projectPath": "C:\\Users\\paula\\source\\repos\\LPA\\LPA.csproj",
+      "packagesPath": "C:\\Users\\paula\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\paula\\source\\repos\\LPA\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\imjua\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\paula\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
@@ -12983,8 +12986,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\imjua\\repos\\LPA_2019_FINAL\\ImageWriter\\ImageWriter.csproj": {
-              "projectPath": "C:\\Users\\imjua\\repos\\LPA_2019_FINAL\\ImageWriter\\ImageWriter.csproj"
+            "C:\\Users\\paula\\source\\repos\\ImageWriter\\ImageWriter.csproj": {
+              "projectPath": "C:\\Users\\paula\\source\\repos\\ImageWriter\\ImageWriter.csproj"
             }
           }
         }

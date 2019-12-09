@@ -125,15 +125,16 @@
     <script>
         $(document).ready(function () {
             var host = window.location.origin;
-            var apiEndPoint = host + "/api/v1/Productos/" + idProducto;
+            var apiEndPoint = host + "/api/v1/Productos/";
             var domContainerProductos = document.getElementById("containerProducto") || $("#containerProducto");
             document.getElementById("leyendaForm").innerText = leyenda;
             var btn = document.getElementById("BtnEnviarDatos");
             btn.innerText = btnLeyenda;
 
+            //Si no es agregar busco los datos del productos para editarlos
             if (idProducto !== -99) {
                  $.ajax({
-                    url: apiEndPoint,
+                    url: apiEndPoint+ idProducto,
                     type: 'GET',
                     dataType: 'json',
                     success: function (prod) {
@@ -172,55 +173,52 @@
                 var nombre = $("#TituloProducto")
                 var precio = $("#PrecioProducto")
                 var descripcion = $("#DescripcionTexto")
-                var imagen = $("#FotoProducto")
+                var imagen = $("#FotoProducto").get(0).files;
+
+                var formData = new FormData();
+
+                formData.append("titulo", nombre.val());
+                formData.append("precio",precio.val() );
+                formData.append("descripcion",descripcion.val());
+                formData.append("FotoProducto", imagen[0]);
 
                 if (idProducto === -99) {
-                    if (imagen.val() == '') {
+                    if (imagen.length ===0 ) {
                         alert("No se selecciono un archvivo");
                         return false;
                     }
-                    //Enviar update
+
+                    //Enviar agregar
                     $.ajax({
                         url: apiEndPoint,
                         type: 'POST',
-                        dataType: 'json',
-                        data: {
-                            productName:nombre ,
-                            productPrice: precio,
-                            productDescription:descripcion  ,
-                            file: new FormData().append("file", imagen)
-                        },
+                        processData: false,
+                        contentType: false,
+                        data:formData,
                         success: function () {
                             window.location = window.location.origin;
                         },
                         error: function (e) {
                             alert("error");
-                            console.log(e);
+                            console.log(e.responseJSON);
                         }
                     });
                 }
                 else
                 {
-                   
-                 
                     //Enviar update
                     $.ajax({
-                        url: apiEndPoint,
+                        url: apiEndPoint+ idProducto,
                         type: 'PUT',
-                        dataType: 'multipart/form-data',
-                        data: {
-                            id: idProducto,
-                            nombre: new FormData().append("productName", nombre),
-                            precio: new FormData().append("productPrice", precio),
-                            descripcion: new FormData().append("productDescription", descripcion),
-                            imagen: new FormData().append("file", imagen)
-                        },
+                         processData: false,
+                        contentType: false,
+                        data: formData,
                         success: function () {
                             window.location  = window.location.origin;
                         },
                         error: function (e) {
                             alert("error");
-                            console.log(e);
+                            console.log(e.responseJSON);
                         }
                     });
                 }

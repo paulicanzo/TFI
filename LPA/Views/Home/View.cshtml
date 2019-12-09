@@ -75,6 +75,7 @@
         var apiEndPoint = host + "/api/v1/Productos/"
         var domContainerProductos = document.getElementById("containerProductos") || $("#containerProductos");
 
+        //Obtengo desde la API los productos y los cargo dinamicamente
         $.ajax({
             url: apiEndPoint,
             type: 'GET',

@@ -87,11 +87,13 @@
 
 
     <script>
+
         $(document).ready(function () {
             var host = window.location.origin;
             var apiEndPoint = host + "/api/v1/Productos/" + @Model;
             var domContainerProductos = document.getElementById("containerProductos") || $("#containerProductos");
 
+            //Busco el producto para mostrar todos sus datos
             $.ajax({
                 url: apiEndPoint,
                 type: 'GET',

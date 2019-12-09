@@ -20,3 +20,4 @@ C:\Users\paula\source\repos\ImageWriter\obj\Debug\netcoreapp2.1\ImageWriter.Asse
 C:\Users\paula\source\repos\ImageWriter\obj\Debug\netcoreapp2.1\ImageWriter.csproj.CopyComplete
 C:\Users\paula\source\repos\ImageWriter\obj\Debug\netcoreapp2.1\ImageWriter.dll
 C:\Users\paula\source\repos\ImageWriter\obj\Debug\netcoreapp2.1\ImageWriter.pdb
+C:\Users\paula\source\repos\ImageWriter\obj\Debug\netcoreapp2.1\ImageWriter.csprojAssemblyReference.cache

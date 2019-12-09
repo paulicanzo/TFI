@@ -50,7 +50,9 @@ namespace LPA.Controllers
         public async Task<IActionResult> PutProducto(int id)
         {   
             if (!ProductoExists(id)) return BadRequest();
+            
             var producto = await _context.Productos.FindAsync(id);
+
             var valiTitulo = Request.Form.TryGetValue("titulo", out var titulo);
             var valiPrecio = Request.Form.TryGetValue("precio", out var precio);
             precio = precio.ToString().Replace(".", ",");
@@ -64,6 +66,8 @@ namespace LPA.Controllers
             producto.ProductName = titulo;
             producto.ProductPrice = precioD;
             producto.ProductDescription = descripcion;
+
+            
 
             if (Request.Form.Files.Count != 0)
             {
@@ -91,6 +95,7 @@ namespace LPA.Controllers
                     }
                 }
             }
+            _context.Productos.Update(producto);
 
             _context.Entry(producto).State = EntityState.Modified;
             try
@@ -118,13 +123,18 @@ namespace LPA.Controllers
             var producto = new Producto();
 
             if (!Request.Form.TryGetValue("titulo", out var titulo) || !Request.Form.TryGetValue("precio", out var precio) ||
-                !Request.Form.TryGetValue("descripcion", out var descripcion) || Decimal.TryParse(precio.ToString().Replace(".", ","), out var precioD))
+                !Request.Form.TryGetValue("descripcion", out var descripcion) || !Decimal.TryParse(precio.ToString().Replace(".", ","), out var precioD))
             {
                 return BadRequest(new JsonResult("ERROR VALIDACION"));
             }
             producto.ProductName = titulo;
             producto.ProductPrice = precioD;
             producto.ProductDescription = descripcion;
+
+            //Usando ENTITY FRAMEWORK EN MEMORIA NECESITAMOS NOSOTROS GENERAR EL SIGUIENTE PRODUCT ID
+            //En las proximas versiones lo van a implementar
+            var newID = _context.Productos.Select(x => x.ProductId).Max() + 1;
+            producto.ProductId = newID;
 
             if (Request.Form.Files.Count != 0)
             {
@@ -154,7 +164,7 @@ namespace LPA.Controllers
                             producto.ProductImagePath = path;
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         return BadRequest(new JsonResult("ERROR"));
                     }
@@ -177,7 +187,7 @@ namespace LPA.Controllers
 
                 return Ok(producto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return BadRequest(new JsonResult("ERROR"));
             }
