@@ -14,5 +14,6 @@ namespace LPA.Context
         }
 
         public DbSet<Producto> Productos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LPA.Context;
+using LPA.Seguridad;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,16 @@ namespace LPA
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<ProductosDbContext>(options => options.UseInMemoryDatabase(databaseName: "LPA"));
+            services.AddPasswordHasher();
+
+            services.AddSession(options =>
+            {
+                // Set a short timeout for easy testing.
+                options.IdleTimeout = TimeSpan.FromSeconds(60);
+                options.Cookie.HttpOnly = true;
+                // Make the session cookie essential
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,8 +56,9 @@ namespace LPA
             }
 
             app.UseStaticFiles();
+            app.UseSession();
             app.UseHttpsRedirection();
-            //app.UseMvc();
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute("default", "{controller=Home}/{action=Productos}/{id?}");

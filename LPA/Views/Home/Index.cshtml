@@ -1,0 +1,120 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Productos LPA</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/shop-homepage.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <button type="button" class="btn btn-success" id="agregar" >Agregar producto</button>
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-2">
+            </div>
+
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-12 col-md-8 mb-4" id="containerProductos">
+
+
+
+                    </div>
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.col-lg-9 -->
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; LPA 2019</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        var host = window.location.origin;
+        document.getElementById("agregar").onclick = function () {
+            window.location = host + "/Home/AgregarProducto/";
+        }; 
+
+
+
+        //Hacer llamada AJAX al servidor
+        var apiEndPoint = host + "/api/v1/Productos/"
+        var domContainerProductos = document.getElementById("containerProductos") || $("#containerProductos");
+
+        //Obtengo desde la API los productos y los cargo dinamicamente
+        $.ajax({
+            url: apiEndPoint,
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function (res) {
+                if (res !== undefined) {
+                    if (res.length == 0) { }
+                    res.forEach(function (prod) {
+                        var urlProducto = host + "/Home/Producto/" + prod.productId;
+                        var urlImagen = host + prod.productImagePath;
+                        var TituloProducto = prod.productName;
+                        var PrecioProducto = prod.productPrice;
+                        var DescripcionProducto = prod.productDescription.substring(0, 50) + " ...";
+                        var div = document.createElement("div");
+                        div.className = "col-lg-12 col-md-8 mb-4";
+                        div.innerHTML = `
+                                            <div class="card h-100">
+                                                <a href="${urlProducto}"><img class="card-img-top" src="${urlImagen}" alt=""></a>
+                                                <div class="card-body">
+                                                    <h4 class="card-title">
+                                                        <a href="${urlProducto}">${TituloProducto}</a>
+                                                    </h4>
+                                                    <h5>$${PrecioProducto}</h5>
+                                                    <p class="card-text">${DescripcionProducto}</p>
+                                                </div>
+                                            </div>`;
+                        console.log(div)
+                        domContainerProductos.appendChild(div);
+                    });
+                }
+            }
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>
+

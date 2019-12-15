@@ -28,7 +28,7 @@ namespace LPA
                 var context = services.GetRequiredService<ProductosDbContext>();
 
                 //4. Call the DataGenerator to create sample data
-                GeneradorDeProductos.GenerarDatos(services);
+                GeneradorDeDatos.GenerarDatos(services);
             }
             //Continue to run the application
             host.Run();
