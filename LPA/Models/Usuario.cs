@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LPA.Models
 {
-    //Clase para modelar el usuario del sistema
+    //Clase para modelar el usuario del sistema BASE DE DATOS MEMORIA
     public class Usuario
     {
         [Key]

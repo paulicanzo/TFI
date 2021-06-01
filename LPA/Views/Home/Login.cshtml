@@ -42,7 +42,7 @@
 <body>
     <div class="card">
         <article class="card-body">
-            <h4 class="card-title text-center mb-4 mt-1">Sign in</h4>
+            <h4 class="card-title text-center mb-4 mt-1">Iniciar Sesión</h4>
             <hr>
             <div id="message-wrap">
                 <span></span>
@@ -66,7 +66,7 @@
                     </div> <!-- input-group.// -->
                 </div> <!-- form-group// -->
                 <div class="form-group">
-                    <button type="submit" id="BtnLogin" class="btn btn-primary btn-block"> Login  </button>
+                    <button type="submit" id="BtnLogin" class="btn btn-primary btn-block"> Acceder  </button>
                 </div> <!-- form-group// -->
             </form>
         </article>
@@ -85,8 +85,7 @@
                 //Validar datos
                 var nombreUsuario = $("#usuario").val();
                 var contrasenaUsuario = $("#contrasena").val();
-                
-                debugger
+
                 $.ajax({
                     url: apiEndPointAutenticar,
                     type: 'POST',
@@ -94,10 +93,12 @@
                     processData: false,
                     data: JSON.stringify({ nombreUsuario, contrasenaUsuario }),
                     success: function (res) {
-                        debugger
+                    //AUTENTICA EL USUARIO
                         if (res.resultado !== undefined) {
                             if (res.resultado) {
                                 var nombreUsuario = res.usuario;
+                                //avisa a la web que el usuario está autenticado seteando una variable de sesión: cada inicio 
+                                // de sesión, se guarda en la sesión. Esto te lo redirije a HomeController y 
                                 $.ajax({
                                     url: apiEndPointPostLogin,
                                     type: 'POST',
@@ -105,9 +106,12 @@
                                     processData: false,
                                     data: JSON.stringify({ nombreUsuario }),
                                     success: function (res12) {
+                                        // si esta autenticaso se crea un link 
                                         var link = document.createElement("a");
+                                        // se setea la url del link a la url base de la web 
                                         link.href = window.location.origin;
                                         document.body.appendChild(link);
+                                        //este link te envía al home 
                                         link.click();                                    
                                     },
                                     error: function (e) {

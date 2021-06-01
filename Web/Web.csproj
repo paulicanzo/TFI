@@ -1,0 +1,583 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\TFI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\TFI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4138B97D-1DBC-43CD-8DAF-DD84965738E6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Web</RootNamespace>
+    <AssemblyName>Web</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44303</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\TFI\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\TFI\packages\AspNet.ScriptManager.bootstrap.3.4.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\TFI\packages\AspNet.ScriptManager.jQuery.3.4.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\TFI\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\TFI\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\TFI\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\TFI\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\TFI\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\TFI\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\TFI\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\TFI\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\TFI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Auditoria\Auditorias.aspx" />
+    <Content Include="Auditoria\Auditoria_LogIn-LogOut.aspx" />
+    <Content Include="Auditoria\Auditoria_OrdenCompra.aspx" />
+    <Content Include="Auditoria\Auditoria_Perfil.aspx" />
+    <Content Include="Auditoria\Detalle_Auditoria_OC.aspx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="elements.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="generic.html" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="BackEnd.master" />
+    <Content Include="FrontEnd.master" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="index.html" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Home.Master" />
+    <Content Include="Seguridad\MDSCambiarClave.aspx" />
+    <Content Include="Seguridad\MDSGestionarGrupo.aspx" />
+    <Content Include="Seguridad\MDSGestionarGrupos.aspx" />
+    <Content Include="Seguridad\MDSGestionarPerfiles.aspx" />
+    <Content Include="Seguridad\MDSGestionarUsuario.aspx" />
+    <Content Include="Seguridad\MDSGestionarUsuarios.aspx" />
+    <Content Include="Seguridad\MDSOlvideMiContraseña.aspx" />
+    <Content Include="Seguridad\MDSResetearClave.aspx" />
+    <Content Include="Seguridad\StyleSheetLogin.css" />
+    <Content Include="Seguridad\WebFormLogin.aspx" />
+    <Content Include="Seguridad\WebModuloSeguridad.aspx" />
+    <Content Include="Sistema\Auditoria\AdministrarReportes.aspx" />
+    <Content Include="Sistema\DefaultBackEnd.aspx" />
+    <Content Include="Sistema\DefaultFrontEnd.aspx" />
+    <Content Include="Sistema\DescontarMercaderia.aspx" />
+    <Content Include="Sistema\DetalleCtaCte.aspx" />
+    <Content Include="Sistema\DetalleNotaVenta.aspx" />
+    <Content Include="Sistema\DetalleOC.aspx" />
+    <Content Include="Sistema\EmpleadoBackEnd.aspx" />
+    <Content Include="Sistema\GenerarNotadeCredito.aspx" />
+    <Content Include="Sistema\GenerarNotadeVenta.aspx" />
+    <Content Include="Sistema\GestionarCategoriaProductos.aspx" />
+    <Content Include="Sistema\GestionarCategoriasProductos.aspx" />
+    <Content Include="Sistema\GestionarCliente.aspx" />
+    <Content Include="Sistema\GestionarClientes.aspx" />
+    <Content Include="Sistema\GestionarCondiciondePago.aspx" />
+    <Content Include="Sistema\GestionarCondicionesdePago.aspx" />
+    <Content Include="Sistema\GestionarNotasdeVentas.aspx" />
+    <Content Include="Sistema\GestionarOrdenCompra.aspx" />
+    <Content Include="Sistema\GestionarProducto.aspx" />
+    <Content Include="Sistema\GestionarProductos.aspx" />
+    <Content Include="Sistema\GestionarProveedor.aspx" />
+    <Content Include="Sistema\GestionarProveedores.aspx" />
+    <Content Include="Sistema\IngresoMercaderia.aspx" />
+    <Content Include="Sistema\ListadoCuentasCorrientes.aspx" />
+    <Content Include="Sistema\OrdendeCompra.aspx" />
+    <Content Include="Sistema\RegistrarPago.aspx" />
+    <Content Include="StyleSheet.css" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Auditoria\Auditorias.aspx.cs">
+      <DependentUpon>Auditorias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditoria\Auditorias.aspx.designer.cs">
+      <DependentUpon>Auditorias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auditoria\Auditoria_LogIn-LogOut.aspx.cs">
+      <DependentUpon>Auditoria_LogIn-LogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditoria\Auditoria_LogIn-LogOut.aspx.designer.cs">
+      <DependentUpon>Auditoria_LogIn-LogOut.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auditoria\Auditoria_OrdenCompra.aspx.cs">
+      <DependentUpon>Auditoria_OrdenCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditoria\Auditoria_OrdenCompra.aspx.designer.cs">
+      <DependentUpon>Auditoria_OrdenCompra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auditoria\Auditoria_Perfil.aspx.cs">
+      <DependentUpon>Auditoria_Perfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditoria\Auditoria_Perfil.aspx.designer.cs">
+      <DependentUpon>Auditoria_Perfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auditoria\Detalle_Auditoria_OC.aspx.cs">
+      <DependentUpon>Detalle_Auditoria_OC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditoria\Detalle_Auditoria_OC.aspx.designer.cs">
+      <DependentUpon>Detalle_Auditoria_OC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackEnd.master.cs">
+      <DependentUpon>BackEnd.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackEnd.master.designer.cs">
+      <DependentUpon>BackEnd.master</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Home.Master.cs">
+      <DependentUpon>Home.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.Master.designer.cs">
+      <DependentUpon>Home.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\MDSCambiarClave.aspx.cs">
+      <DependentUpon>MDSCambiarClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\MDSCambiarClave.aspx.designer.cs">
+      <DependentUpon>MDSCambiarClave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\MDSGestionarGrupo.aspx.cs">
+      <DependentUpon>MDSGestionarGrupo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\MDSGestionarGrupo.aspx.designer.cs">
+      <DependentUpon>MDSGestionarGrupo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\MDSGestionarGrupos.aspx.cs">
+      <DependentUpon>MDSGestionarGrupos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\MDSGestionarGrupos.aspx.designer.cs">
+      <DependentUpon>MDSGestionarGrupos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\MDSGestionarPerfiles.aspx.cs">
+      <DependentUpon>MDSGestionarPerfiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\MDSGestionarPerfiles.aspx.designer.cs">
+      <DependentUpon>MDSGestionarPerfiles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\MDSGestionarUsuario.aspx.cs">
+      <DependentUpon>MDSGestionarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\MDSGestionarUsuario.aspx.designer.cs">
+      <DependentUpon>MDSGestionarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\MDSGestionarUsuarios.aspx.cs">
+      <DependentUpon>MDSGestionarUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\MDSGestionarUsuarios.aspx.designer.cs">
+      <DependentUpon>MDSGestionarUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\MDSOlvideMiContraseña.aspx.cs">
+      <DependentUpon>MDSOlvideMiContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\MDSOlvideMiContraseña.aspx.designer.cs">
+      <DependentUpon>MDSOlvideMiContraseña.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\MDSResetearClave.aspx.cs">
+      <DependentUpon>MDSResetearClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\MDSResetearClave.aspx.designer.cs">
+      <DependentUpon>MDSResetearClave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\WebFormLogin.aspx.cs">
+      <DependentUpon>WebFormLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\WebFormLogin.aspx.designer.cs">
+      <DependentUpon>WebFormLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\WebModuloSeguridad.aspx.cs">
+      <DependentUpon>WebModuloSeguridad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seguridad\WebModuloSeguridad.aspx.designer.cs">
+      <DependentUpon>WebModuloSeguridad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\Auditoria\AdministrarReportes.aspx.cs">
+      <DependentUpon>AdministrarReportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\Auditoria\AdministrarReportes.aspx.designer.cs">
+      <DependentUpon>AdministrarReportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\DefaultBackEnd.aspx.cs">
+      <DependentUpon>DefaultBackEnd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\DefaultBackEnd.aspx.designer.cs">
+      <DependentUpon>DefaultBackEnd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\DefaultFrontEnd.aspx.cs">
+      <DependentUpon>DefaultFrontEnd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\DefaultFrontEnd.aspx.designer.cs">
+      <DependentUpon>DefaultFrontEnd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\DescontarMercaderia.aspx.cs">
+      <DependentUpon>DescontarMercaderia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\DescontarMercaderia.aspx.designer.cs">
+      <DependentUpon>DescontarMercaderia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\DetalleCtaCte.aspx.cs">
+      <DependentUpon>DetalleCtaCte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\DetalleCtaCte.aspx.designer.cs">
+      <DependentUpon>DetalleCtaCte.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\DetalleNotaVenta.aspx.cs">
+      <DependentUpon>DetalleNotaVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\DetalleNotaVenta.aspx.designer.cs">
+      <DependentUpon>DetalleNotaVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\DetalleOC.aspx.cs">
+      <DependentUpon>DetalleOC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\DetalleOC.aspx.designer.cs">
+      <DependentUpon>DetalleOC.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\EmpleadoBackEnd.aspx.cs">
+      <DependentUpon>EmpleadoBackEnd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\EmpleadoBackEnd.aspx.designer.cs">
+      <DependentUpon>EmpleadoBackEnd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GenerarNotadeCredito.aspx.cs">
+      <DependentUpon>GenerarNotadeCredito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GenerarNotadeCredito.aspx.designer.cs">
+      <DependentUpon>GenerarNotadeCredito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GenerarNotadeVenta.aspx.cs">
+      <DependentUpon>GenerarNotadeVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GenerarNotadeVenta.aspx.designer.cs">
+      <DependentUpon>GenerarNotadeVenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarCategoriaProductos.aspx.cs">
+      <DependentUpon>GestionarCategoriaProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarCategoriaProductos.aspx.designer.cs">
+      <DependentUpon>GestionarCategoriaProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarCategoriasProductos.aspx.cs">
+      <DependentUpon>GestionarCategoriasProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarCategoriasProductos.aspx.designer.cs">
+      <DependentUpon>GestionarCategoriasProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarCliente.aspx.cs">
+      <DependentUpon>GestionarCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarCliente.aspx.designer.cs">
+      <DependentUpon>GestionarCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarClientes.aspx.cs">
+      <DependentUpon>GestionarClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarClientes.aspx.designer.cs">
+      <DependentUpon>GestionarClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarCondiciondePago.aspx.cs">
+      <DependentUpon>GestionarCondiciondePago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarCondiciondePago.aspx.designer.cs">
+      <DependentUpon>GestionarCondiciondePago.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarCondicionesdePago.aspx.cs">
+      <DependentUpon>GestionarCondicionesdePago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarCondicionesdePago.aspx.designer.cs">
+      <DependentUpon>GestionarCondicionesdePago.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarNotasdeVentas.aspx.cs">
+      <DependentUpon>GestionarNotasdeVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarNotasdeVentas.aspx.designer.cs">
+      <DependentUpon>GestionarNotasdeVentas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarOrdenCompra.aspx.cs">
+      <DependentUpon>GestionarOrdenCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarOrdenCompra.aspx.designer.cs">
+      <DependentUpon>GestionarOrdenCompra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarProducto.aspx.cs">
+      <DependentUpon>GestionarProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarProducto.aspx.designer.cs">
+      <DependentUpon>GestionarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarProductos.aspx.cs">
+      <DependentUpon>GestionarProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarProductos.aspx.designer.cs">
+      <DependentUpon>GestionarProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarProveedor.aspx.cs">
+      <DependentUpon>GestionarProveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarProveedor.aspx.designer.cs">
+      <DependentUpon>GestionarProveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\GestionarProveedores.aspx.cs">
+      <DependentUpon>GestionarProveedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\GestionarProveedores.aspx.designer.cs">
+      <DependentUpon>GestionarProveedores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\IngresoMercaderia.aspx.cs">
+      <DependentUpon>IngresoMercaderia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\IngresoMercaderia.aspx.designer.cs">
+      <DependentUpon>IngresoMercaderia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\ListadoCuentasCorrientes.aspx.cs">
+      <DependentUpon>ListadoCuentasCorrientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\ListadoCuentasCorrientes.aspx.designer.cs">
+      <DependentUpon>ListadoCuentasCorrientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\OrdendeCompra.aspx.cs">
+      <DependentUpon>OrdendeCompra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\OrdendeCompra.aspx.designer.cs">
+      <DependentUpon>OrdendeCompra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\RegistrarPago.aspx.cs">
+      <DependentUpon>RegistrarPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sistema\RegistrarPago.aspx.designer.cs">
+      <DependentUpon>RegistrarPago.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controladora\Controladora.csproj">
+      <Project>{094be33a-04c1-4870-99fc-9c3001272fa7}</Project>
+      <Name>Controladora</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{c0f4ca7f-aa35-4b9a-95be-24684cfa1fd2}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64545</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44303/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\TFI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\TFI\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

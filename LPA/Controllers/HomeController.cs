@@ -23,7 +23,7 @@ namespace LPA.Controllers
         public void PostLogin()
         {
             //te devuelve en bytes la cadena de string del usuario y eso se guarda en la sesion.
-            HttpContext.Session.Set("usuario", Encoding.ASCII.GetBytes(""));
+            HttpContext.Session.Set("usuario", Encoding.ASCII.GetBytes("usuario"));
         }
 
         public IActionResult Producto(int id)

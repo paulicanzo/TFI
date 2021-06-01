@@ -1,0 +1,83 @@
+﻿<%--<%@ Master Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="BackEnd.master.cs" Inherits="Web.BackEnd" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <div>
+        <nav>
+            <ul id="Menu" runat="server">
+                <li id="Li2" runat="server"><a>La Libreria Web</a>
+                    <ul>
+                        <asp:LinkButton ID="btnLinkButton1" Text="LogOut!" runat="server" OnClick="btnLinkButton1_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="btnSesion" Text="" runat="server" OnClick="btnSesion_Click"></asp:LinkButton>
+                        <asp:Label lcssclass="label-danger" ID="LabelSesion" runat="server" Text="Label"></asp:Label>
+                        <asp:Button ID="ButtonCerrarSesion" runat="server" Text="LogOut!" OnClick="ButtonCerrarSesion_Click" />
+                    </ul>
+                </li>
+
+                <li id="Gestiones" runat="server"><a>Gestionar</a>
+                    <ul>
+                        <li><a href=">Clientes</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+</asp:Content>--%>
+
+<%-- 
+
+				<li id="Gestiones" runat="server"><a>Gestionar</a>
+					<ul>
+                        <li><a href="/Sistema/GestionarClientes.aspx" runat="server" id="etClientes">Clientes</a></li>
+						<li><a href="/Sistema/GestionarNotasdeVentas.aspx" runat="server"  id="EtNotaVenta">Notas de Ventas</a></li>
+						<li><a href="/Sistema/GestionarCategoriasProductos.aspx" runat="server" id="EtCategoriaProducto">Categorias de Productos</a></li>
+						<li><a href="/Sistema/GestionarCondicionesdePago.aspx" runat="server" id="EtiquetaCondiciones" >Condiciones de Pagos</a></li>
+						<li><a href="/Sistema/GestionarProductos.aspx" runat="server" id="EtProductos">Productos</a></li>
+						<li><a href="/Sistema/GestionarOrdenCompra.aspx" runat="server" id="EtOC">Ordenes de Compras</a></li>
+                        <li><a href="/Sistema/GestionarProveedores.aspx" runat="server" id="EtProveedores">Proveedores</a></li>
+                        <li><a href="/Sistema/ListadoCuentasCorrientes.aspx" runat="server" id="A1">Cuentas Corrientes</a></li>
+                        <li><a href="/Sistema/RegistrarPago.aspx" id="A2" runat="server" >Pago</a></li>
+                        <li><a href="/Sistema/GenerarNotadeCredito.aspx" runat="server" id="A3" >Nota de Credito</a></li>
+					</ul>
+                    </li>
+                <li id="Seguridad" class="text-center" runat="server"><a>Seguridad</a>
+					<ul>
+						<li><a href="/Seguridad/MDSGestionarUsuarios.aspx" id="Usuarios" runat="server">Usuarios</a></li>
+						<li><a href="/Seguridad/MDSGestionarPerfiles.aspx" id="Perfiles" runat="server">Perfiles</a></li>
+						<li><a href="/Seguridad/MDSGestionarGrupos.aspx" id="Grupos" runat="server">Grupos</a></li>
+                    </ul>						
+				</li>
+                <li id="Auditoria" runat="server"><a>Auditoria</a>
+					<ul>
+                        <li><a href="/Auditoria/Auditoria_LogIn-LogOut.aspx" id="AuditoriaLogIn" runat="server">LogIn-LogOut</a></li>
+                        <li><a href="/Auditoria/Auditoria_OrdenCompra.aspx" id="Auditoriaordencompra" runat="server">Orden de Compra</a></li>
+                        <li><a href="/Auditoria/Auditoria_Perfil.aspx" id="AuditoriaPerfiles" runat="server">Perfil</a></li>
+					</ul>
+				</li>
+                 <li id="Li1" runat="server"><a>Reportes</a>
+					<ul>
+						<li><a href="/Sistema/Reportes/ListadoProductos.aspx" id="ReportesListaProductos" runat="server">Listado de Productos</a></li>						
+                        <li><a href="/Sistema/Reportes/ListadoProductosMasVendidos.aspx" id="ReportesProducMasVendidos" runat="server">Productos mas Vendidos</a></li>
+                        <li><a href="/Sistema/Reportes/ComprasMensuales.aspx" id="ReportesComprasMensuales" runat="server">Compras mensuales</a></li>
+                        <li><a href="/Sistema/Reportes/ListadoMayoresDeudores.aspx" id="ReportesMayoreDeudores" runat="server">Mayores Deudores</a></li>
+                        <li><a href="/Sistema/Reportes/ListadoMayoresCompradores.aspx" id="ReportesMayoresCompr" runat="server">Mayores Compradores</a></li>
+					</ul>
+				</li>
+                  <li id="Li3" runat="server"><a></a>
+					<asp:LinkButton ID="LinkButton1" Text="" runat="server" OnClick="LinkButton1_Click"></asp:LinkButton>
+				</li>
+                    
+			</ul>
+		</nav>
+        </div>
+    <div>
+
+	</div> 
+
+    
+        <asp:ContentPlaceHolder ID="cuerpo" runat="server">                     
+          
+    </asp:ContentPlaceHolder>
+    --%>

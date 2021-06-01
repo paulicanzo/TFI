@@ -11,3 +11,4 @@ namespace LPA.Comunicacion.Request
         public string contrasenaUsuario { get; set; }
     }
 }
+//C:\Users\paula\source\repos\LPA\wwwroot\images\
